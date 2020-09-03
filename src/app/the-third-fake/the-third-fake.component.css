@@ -1,0 +1,39 @@
+.bass-me {
+  position: relative;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.third-cms-wrapper {
+  background-color: beige;
+}
+
+.third-cms-img {
+  object-fit: cover;
+}
+
+.third-cms-text {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  white-space: pre-line;
+  hyphens: auto;
+  overflow: hidden;
+}
+
+.third-cms-text p {
+  margin: 0.3rem 0.8rem 0 0.8rem;
+  font-size: medium !important;
+}
+
+/* Editing UI CSS  */
+
+/* NgClass Classes */
+.cms-hide {
+  display: none;
+}
+
+.cms-show {
+  display: block;
+}

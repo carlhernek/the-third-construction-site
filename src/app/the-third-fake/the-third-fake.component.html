@@ -1,0 +1,27 @@
+<!-- CMS Wrapper -->
+<div class="third-cms-wrapper bass-me">
+  <!-- Tabula Rasa -->
+
+  <!-- Tabula Rasa -->
+
+  <!-- Editing UI -->
+  <!-- Define CMS type, image OR text -->
+  <div class="third-cms-edit"></div>
+
+  <!-- Editing UI -->
+
+  <!-- Image -->
+  <img
+    [ngClass]="cmsClassDisplay[1]"
+    class="third-cms-img bass-me"
+    src="{{ imageUrl }}"
+  />
+  <!-- Image -->
+
+  <!-- Text -->
+  <section class="bass-me third-cms-text" [ngClass]="cmsClassDisplay[2]">
+    <p *ngFor="let text of textArr">{{ text }}</p>
+  </section>
+  <!-- Text -->
+</div>
+<!-- CMS Wrapper -->
