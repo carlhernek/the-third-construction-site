@@ -10,12 +10,12 @@ export class TheThirdFakeComponent implements OnInit {
   isAdmin: boolean;
 
   // Content Variables
-  imageUrl?: String;
-  textArr?: String[];
-  cmsType: Number; // 0 = Empty, 1 = Image, 2 = Text, 3 = ...etc
+  imageUrl?: string;
+  textArr?: string[];
+  cmsType: number; // 0 = Empty, 1 = Image, 2 = Text, 3 = ...etc
 
   // Class Definitions
-  cmsClassDisplay: String[];
+  cmsClassDisplay: string[];
 
   constructor() {
     this.isAdmin = true;
@@ -29,7 +29,7 @@ export class TheThirdFakeComponent implements OnInit {
     this.cmsClassDisplay = ['cms-hide', 'cms-hide', 'cms-hide'];
   }
 
-  setCmsType = (type) => {
+  setCmsType = (type: number) => {
     if (type !== 0) {
       this.cmsClassDisplay[type] = 'cms-show';
       console.log(this.cmsClassDisplay);
