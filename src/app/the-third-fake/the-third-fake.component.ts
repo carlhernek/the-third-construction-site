@@ -27,7 +27,7 @@ export class TheThirdFakeComponent implements OnInit {
 
   constructor() {
     // 1. User is admin
-    this.isAdmin = true;
+    this.isAdmin = false;
 
     // 2. Toggles for editing UI
     this.editToggle = false;
@@ -53,6 +53,15 @@ export class TheThirdFakeComponent implements OnInit {
     }
   };
 
+  setAdmin = (auth: string) => {
+    if (auth === 'true') {
+      console.log('yay');
+      this.isAdmin = true;
+    } else {
+      this.isAdmin = false;
+    }
+  };
+
   setCmsType = (type: number) => {
     if (type !== 0) {
       this.cmsClassDisplay[type] = 'cms-show';
@@ -67,5 +76,6 @@ export class TheThirdFakeComponent implements OnInit {
 
   ngOnInit(): void {
     this.parseInput(this.iType);
+    this.setAdmin(this.iAdmin);
   }
 }
