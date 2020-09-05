@@ -31,7 +31,7 @@
 
 /* Editing UI CSS  */
 .third-cms-edit {
-  border-radius: 0.25rem;
+  border-radius: 0.75rem;
   display: flex;
   flex-direction: row-reverse;
   top: 0;
