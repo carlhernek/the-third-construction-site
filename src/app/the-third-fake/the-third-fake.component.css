@@ -88,6 +88,10 @@
   fill: rgba(216, 149, 149, 0.55);
 }
 
+.button-confirm svg {
+  fill: #62a57ba9;
+}
+
 .third-cms-edit-icon {
   height: 70%;
   width: 70%;
