@@ -15,7 +15,7 @@ export class TheThirdFakeComponent implements OnInit {
 
   // 2. Toggles for editing UI
   editToggle: boolean;
-  editToggleArr: String[];
+  // editToggleArr: String[];
 
   // 3. Content Variables
   imageUrl?: string;
@@ -44,6 +44,14 @@ export class TheThirdFakeComponent implements OnInit {
     this.cmsType = 0;
     this.cmsClassDisplay = ['cms-hide', 'cms-hide', 'cms-hide'];
   }
+
+  editButton = () => {
+    if (this.editToggle) {
+      this.editToggle = false;
+    } else {
+      this.editToggle = true;
+    }
+  };
 
   setCmsType = (type: number) => {
     if (type !== 0) {
