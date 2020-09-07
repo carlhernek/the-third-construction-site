@@ -1,9 +1,5 @@
 <!-- CMS Wrapper -->
 <div class="third-cms-wrapper bass-me">
-  <!-- Tabula Rasa -->
-
-  <!-- Tabula Rasa -->
-
   <!-- Editing UI -->
   <!-- Define CMS type, image OR text -->
   <div
@@ -75,28 +71,12 @@
     </button>
     <!-- Set CMS Type - Text  -->
 
-    <!-- Confirm Edits Button  -->
-    <button
-      class="button-up button-confirm"
-      *ngIf="editToggle && cmsType != 0"
-      (click)="editButton()"
-    >
-      <svg
-        class="third-cms-edit-icon"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 20 20"
-      >
-        <path
-          fill-rule="evenodd"
-          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-          clip-rule="evenodd"
-        />
-      </svg>
-    </button>
-    <!-- Confirm Edits Button  -->
-
     <!-- Upload Image Button -->
-    <button class="button-up" *ngIf="editToggle && cmsType == 1">
+    <button
+      class="button-up"
+      *ngIf="editToggle && cmsType == 1"
+      (click)="imageInput.click()"
+    >
       <svg
         class="third-cms-edit-icon"
         xmlns="http://www.w3.org/2000/svg"
@@ -109,10 +89,21 @@
         />
       </svg>
     </button>
+
+    <input
+      class="hide"
+      type="file"
+      #imageInput
+      (change)="onFileChanged($event)"
+    />
     <!-- Upload Image Button -->
 
     <!-- Edit Text Button  -->
-    <button class="button-up" *ngIf="editToggle && cmsType == 2">
+    <button
+      [ngClass]="{ 'button-down': textEdit, 'button-up': !textEdit }"
+      *ngIf="editToggle && cmsType == 2"
+      (click)="editText()"
+    >
       <svg
         class="third-cms-edit-icon"
         xmlns="http://www.w3.org/2000/svg"
@@ -162,7 +153,14 @@
 
   <!-- Text -->
   <section class="bass-me third-cms-text" [ngClass]="cmsClassDisplay[2]">
-    <p *ngFor="let text of textArr">{{ text }}</p>
+    <p *ngIf="!textEdit">{{ textString }}</p>
+    <p
+      *ngIf="textEdit"
+      contenteditable="true"
+      (input)="setTextContent($event.target.innerHTML)"
+    >
+      {{ textString }}
+    </p>
   </section>
   <!-- Text -->
 </div>
