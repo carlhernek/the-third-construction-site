@@ -7,7 +7,6 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class TheThirdFakeComponent implements OnInit {
   // Inputs
-  @Input() iType: any;
   @Input() iAdmin: any;
 
   // 1. User is admin and may edit content
@@ -41,7 +40,7 @@ export class TheThirdFakeComponent implements OnInit {
     ];
 
     // 4. CMS Type Definition & Classes
-    this.cmsType = 0;
+    this.cmsType = 1;
     this.cmsClassDisplay = ['cms-hide', 'cms-hide', 'cms-hide'];
   }
 
@@ -63,19 +62,18 @@ export class TheThirdFakeComponent implements OnInit {
   };
 
   setCmsType = (type: number) => {
-    if (type !== 0) {
-      this.cmsClassDisplay[type] = 'cms-show';
+    for (var i = 0; i < this.cmsClassDisplay.length; i++) {
+      this.cmsClassDisplay[i] = 'cms-hide';
+      if (type !== 0 && i === type) {
+        this.cmsClassDisplay[type] = 'cms-show';
+      }
     }
-  };
-
-  parseInput = (input: any) => {
-    let output = parseInt(input);
-    this.cmsType = output;
-    this.setCmsType(this.cmsType);
+    this.cmsType = type;
+    this.editToggle = false;
   };
 
   ngOnInit(): void {
-    this.parseInput(this.iType);
     this.setAdmin(this.iAdmin);
+    this.setCmsType(this.cmsType);
   }
 }
