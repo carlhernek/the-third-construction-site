@@ -18,7 +18,8 @@ export class TheThirdFakeComponent implements OnInit {
   textEdit: boolean;
 
   // 3. Content Variables
-  imageUrl?: string;
+  imageUrl?: any;
+  imagePath: any;
   textString?: string;
   tempImg: any;
 
@@ -35,8 +36,8 @@ export class TheThirdFakeComponent implements OnInit {
     this.editToggle = false;
 
     // 3. Content Variables
-    this.imageUrl =
-      'https://res.cloudinary.com/carlhernek/image/upload/v1594818036/SAR-demo/Restaurants/orlova-maria-oMTlhdFUhdI-unsplash_tfbudv.jpg';
+    this.imageUrl = '';
+    this.imagePath = '';
     this.textString = null;
 
     // 4. CMS Type Definition & Classes
@@ -54,10 +55,16 @@ export class TheThirdFakeComponent implements OnInit {
     }
   };
 
-  // Image editing functions
+  // Image editing functions.
+  // Preview code for angular found at: https://www.talkingdotnet.com/show-image-preview-before-uploading-using-angular-7/
   onFileChanged(event: any) {
-    const file = event.target.files[0];
-    console.log(file);
+    const file = event.target.files;
+    let reader = new FileReader();
+    this.imagePath = file[4];
+    reader.readAsDataURL(file[0]);
+    reader.onload = (_event) => {
+      this.imageUrl = reader.result;
+    };
   }
 
   // Text editing functions
