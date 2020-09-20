@@ -6,47 +6,47 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./the-third-fake.component.css'],
 })
 export class TheThirdFakeComponent implements OnInit {
-  // Inputs
+  // Inputs.
   @Input() Auth: any;
 
-  // 1. User is admin and may edit content
+  // 1. User is admin and may edit content.
   isAdmin: boolean;
   serviceAdmin: string;
 
-  // 2. Toggles for editing UI
+  // 2. Toggles for editing UI.
   editToggle: boolean;
   textEdit: boolean;
 
-  // 3. Content Variables
+  // 3. Content Variables.
   imageUrl?: any;
-  imagePath: any;
+  imagePath?: any;
   textString?: string;
   tempImg: any;
 
-  // 4. CMS Type Definition
+  // 4. CMS Type Definition.
   cmsType: number; // 0 = Empty, 1 = Image, 2 = Text, 3 = ...etc
   cmsClassDisplay: string[];
 
   constructor() {
-    // 1. User is admin
+    // 1. User is admin.
     this.isAdmin = false;
     this.serviceAdmin = 'admin@app.com';
 
-    // 2. Toggles for editing UI
+    // 2. Toggles for editing UI.
     this.editToggle = false;
 
-    // 3. Content Variables
-    this.imageUrl = '';
-    this.imagePath = '';
+    // 3. Content Variables.
+    this.imageUrl = null;
+    this.imagePath = null;
     this.textString = null;
 
-    // 4. CMS Type Definition & Classes
+    // 4. CMS Type Definition & Classes.
     this.cmsType = 0;
     this.cmsClassDisplay = ['cms-hide', 'cms-hide', 'cms-hide'];
     this.tempImg = 'upload here';
   }
 
-  // Toggle Editing UI
+  // Toggle Editing UI.
   editButton = () => {
     if (this.editToggle) {
       this.editToggle = false;
@@ -67,7 +67,7 @@ export class TheThirdFakeComponent implements OnInit {
     };
   }
 
-  // Text editing functions
+  // Text editing functions.
   editText = () => {
     if (this.textEdit) {
       this.formatTextContent();
@@ -86,13 +86,14 @@ export class TheThirdFakeComponent implements OnInit {
     }
   };
 
+  // Temporary fix to contenteditable bug.
   formatTextContent = () => {
     let textToFormat = this.textString;
     const regex = /<br>/gi;
     this.textString = textToFormat.replace(regex, ' ');
   };
 
-  // Authorizes the user as admin
+  // Authorizes the user as admin.
   setAdmin = (auth: string) => {
     if (auth === this.serviceAdmin) {
       this.isAdmin = true;
@@ -101,7 +102,7 @@ export class TheThirdFakeComponent implements OnInit {
     }
   };
 
-  // Changes the CMS type
+  // Changes the CMS type.
   setCmsType = (type: number) => {
     for (var i = 0; i < this.cmsClassDisplay.length; i++) {
       this.cmsClassDisplay[i] = 'cms-hide';
