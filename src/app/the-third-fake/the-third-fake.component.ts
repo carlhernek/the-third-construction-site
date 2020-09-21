@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class TheThirdFakeComponent implements OnInit {
   // Inputs.
   @Input() Auth: any;
+  @Input() CmsID: any;
 
   // 1. User is admin and may edit content.
   isAdmin: boolean;
